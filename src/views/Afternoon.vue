@@ -67,14 +67,11 @@ export default {
         .ref(opcao)
         .once("value")).val();
 
-      valorAntigo = valorAntigo ? valorAntigo : 0;
-
       try {
         await firebase
           .database()
           .ref(opcao)
           .set(++valorAntigo);
-        // Sucesso
 
         await this.pesquisarDados();
       } catch (e) {
