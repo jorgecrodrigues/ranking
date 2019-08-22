@@ -7,16 +7,17 @@
         </h1>
       </div>
       <div class="box-right">
-        <One/>
-        <Two/>
-        <three/>
-        <Four/>
+        <One v-on:click.native="enviarVoto('Sir-Barman')"/>
+        <Two v-on:click.native="enviarVoto('TecSoc')"/>
+        <three v-on:click.native="enviarVoto('CDF-Transportes')"/>
+        <Four v-on:click.native="enviarVoto('NewFast')"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import firebase from 'firebase';
   import One from '@/components/Afternoon/One.vue';
   import Two from '@/components/Afternoon/Two.vue';
   import Three from '@/components/Afternoon/Three.vue';
@@ -30,6 +31,38 @@
       Three,
       Four
     },
+    data(){
+      return{
+        jaVotou: false
+      }
+    },
+    methods:{
+      async enviarVoto(opcao){
+
+        if(jaVotou){
+          // Corno já votou
+          return;
+        }
+
+        let valorAntigo = await firebase.database()
+          .ref(opcao)
+          .once('value');
+
+        valorAntigo = valorAntigo ? valorAntigo : 0;
+
+        try{
+          await firebase.database()
+            .ref(opcao)
+            .set(++valorAntigo);
+          // Sucesso
+
+          jaVotou = true;
+        }catch(e){
+          // Fudeo de vez
+
+        }
+      }
+    }
   };
 </script>
 
