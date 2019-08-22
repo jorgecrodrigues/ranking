@@ -57,16 +57,10 @@ export default {
   methods: {
     async enviarVoto(opcao) {
 
-        if(jaVotou){
-          // Corno já votou
-          return;
-        }
-
-        let valorAntigo = await firebase.database()
-          .ref(opcao)
-          .once('value');
-
-        valorAntigo = valorAntigo ? valorAntigo : 0;
+      if(jaVotou){
+        // Corno já votou
+        return;
+      }
 
       let valorAntigo = (await firebase
         .database()
