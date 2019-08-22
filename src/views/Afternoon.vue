@@ -21,7 +21,8 @@
     <div class="box">
       <div class="box-left">
         <h1 class="question">
-          Qual destes negócios você acredita que tem mais potencial para ser lançado no mercado? <br/>
+          Qual destes negócios você acredita que tem mais potencial para ser lançado no mercado?
+          <br/>
           <small class="result" v-on:click="toogleRanking">Ver Ranking</small>
         </h1>
       </div>
@@ -32,7 +33,7 @@
         <Four v-on:click.native="enviarVoto('NewFast')"/>
       </div>
       <div class="box-right" v-if="jaVotou">
-        <h1>Obrigado!!!</h1>
+        <h1>Obrigado !!!</h1>
         <span class="back" v-on:click="backToVote">Votar</span>
       </div>
     </div>
@@ -152,7 +153,7 @@
 
   .back {
     padding: .2rem 1rem .3rem 1rem;
-    border: 1px solid;
+    border: 2px solid #eeeeee;
     border-radius: 3px;
     font-size: 25px;
     font-weight: 900;
