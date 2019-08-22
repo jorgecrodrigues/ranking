@@ -1,10 +1,17 @@
 <template>
   <div class="afternoon bg-pan-left">
     <div class="box">
-      <One/>
-      <Two/>
-      <three/>
-      <Four/>
+      <div class="box-left">
+        <h1 class="question">
+          Qual destes negócios você acredita que tem mais potencial para ser lançado no mercado?
+        </h1>
+      </div>
+      <div class="box-right">
+        <One/>
+        <Two/>
+        <three/>
+        <Four/>
+      </div>
     </div>
   </div>
 </template>
@@ -29,17 +36,38 @@
 <style scoped>
   .afternoon {
     height: 100%;
-    background-image: url("../assets/svgs/one.svg");
-    background-size: cover;
-    background-position: center right;
+  }
+
+  .question {
+    width: 60%;
+    padding: 5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    font-size: 3rem;
+    color: black;
   }
 
   .box {
-    margin-left: 50%;
-    width: 50%;
     min-height: 100%;
     display: flex;
+  }
+
+  .box-left,
+  .box-right {
+    width: 50%;
+  }
+
+  .box-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     flex-direction: column;
-    justify-items: flex-end;
   }
 </style>

@@ -12,8 +12,8 @@
 
 <style scoped>
   .two {
-    margin: 15px;
     padding: .4rem 2rem;
+    width: 100%;
     background: #ff7675;
     background-image: url("../../assets/svgs/bg.svg");
     background-size: cover;

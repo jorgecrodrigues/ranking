@@ -12,8 +12,8 @@
 
 <style scoped>
   .four {
-    margin: 15px;
     padding: .4rem 2rem;
+    width: 100%;
     background: #fdcb6e;
     background-image: url("../../assets/svgs/bg.svg");
     background-size: cover;
