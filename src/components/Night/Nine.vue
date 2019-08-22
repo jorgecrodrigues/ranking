@@ -21,7 +21,7 @@
     background: #d63031;
     background-image: url("../../assets/svgs/bg.svg");
     background-size: cover;
-    border: 2px solid white;
+    border: 10px solid white;
     border-radius: 5px;
     text-transform: uppercase;
     cursor: pointer;

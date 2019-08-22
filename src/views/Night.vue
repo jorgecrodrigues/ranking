@@ -1,5 +1,43 @@
 <template>
   <div class="night">
+    <div class="ranking" v-if="jaVotou">
+      <div>
+        <h2>{{this.equipes.one.nome}}</h2>
+        <h3>{{this.equipes.one.pontos}}</h3>
+      </div>
+      <div>
+        <h2>{{this.equipes.two.nome}}</h2>
+        <h3>{{this.equipes.two.pontos}}</h3>
+      </div>
+      <div>
+        <h2>{{this.equipes.three.nome}}</h2>
+        <h3>{{this.equipes.three.pontos}}</h3>
+      </div>
+      <div>
+        <h2>{{this.equipes.four.nome}}</h2>
+        <h3>{{this.equipes.four.pontos}}</h3>
+      </div>
+      <div>
+        <h2>{{this.equipes.five.nome}}</h2>
+        <h3>{{this.equipes.five.pontos}}</h3>
+      </div>
+      <div>
+        <h2>{{this.equipes.six.nome}}</h2>
+        <h3>{{this.equipes.six.pontos}}</h3>
+      </div>
+      <div>
+        <h2>{{this.equipes.seven.nome}}</h2>
+        <h3>{{this.equipes.seven.pontos}}</h3>
+      </div>
+      <div>
+        <h2>{{this.equipes.eight.nome}}</h2>
+        <h3>{{this.equipes.eight.pontos}}</h3>
+      </div>
+      <div>
+        <h2>{{this.equipes.nine.nome}}</h2>
+        <h3>{{this.equipes.nine.pontos}}</h3>
+      </div>
+    </div>
     <div class="box">
       <div class="box-left">
         <h1 class="question">
@@ -26,6 +64,7 @@
 </template>
 
 <script>
+  import firebase from 'firebase';
   import One from '@/components/Night/One.vue';
   import Two from '@/components/Night/Two.vue';
   import Three from '@/components/Night/Three.vue';
@@ -131,6 +170,7 @@
               equipe.pontos = e ? e : 0;
             });
         }
+        console.log(this.equipes);
       }
     },
     mounted() {
@@ -183,5 +223,20 @@
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
+  }
+
+  .ranking {
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    text-transform: uppercase;
+    position: fixed;
+    display: flex;
+  }
+
+  .ranking div h2,
+  .ranking div h3 {
+    margin: 0 .5rem;
+    font-size: 15px;
   }
 </style>
