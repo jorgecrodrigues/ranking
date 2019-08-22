@@ -2,9 +2,9 @@
   <div class="afternoon bg-pan-left">
     <div class="box">
       <div class="box-left">
-        <h1 class="question">
-          Qual destes negócios você acredita que tem mais potencial para ser lançado no mercado?
-        </h1>
+        <h1
+          class="question"
+        >Qual destes negócios você acredita que tem mais potencial para ser lançado no mercado?</h1>
       </div>
       <div class="box-right">
         <One v-on:click.native="enviarVoto('Sir-Barman')"/>
@@ -53,48 +53,93 @@
           }
         }
       };
-    },
-    methods: {
-      async enviarVoto(opcao) {
+    };
+  },
+  methods: {
+    async;
+    enviarVoto(opcao);
+    {
+      if (this.jaVotou) {
+        // Corno já votou
+        return;
+      }
 
-        if (jaVotou) {
-          // Corno já votou
-          return;
-        }
+      let valorAntigo = (await firebase
+        .database()
+        .ref(opcao)
+        .once('value')).val();
 
-        let valorAntigo = (await firebase
+      try {
+        this.jaVotou = true;
+        await firebase
           .database()
           .ref(opcao)
-          .once('value')).val();
+          .once('value');
+      )
+  .val();
 
-        valorAntigo = valorAntigo ? valorAntigo : 0;
 
-        try {
-          await firebase
-            .database()
-            .ref(opcao)
-            .set(++valorAntigo);
-          // Sucesso
+  this.pesquisarDados();
+  } catch
+  (e);
+  {
+    // Fudeo de vez
+  }
+  },
+  async;
+  pesquisarDados();
+  {
+    let one = this.equipes.one;
 
-          pesquisarDados();
-          this.jaVotou = true;
-        } catch (e) {
-          // Fudeo de vez
-        }
-      },
-      async pesquisarDados() {
-        equipes.array.forEach(element => {
-          firebase
-            .database()
-            .ref(element.nome)
-            .then(e => {
-              e = e.val();
-              element.pontos = e ? e : 0;
-            });
-        });
-      }
-    }
-  };
+    firebase
+      .database()
+      .ref(one.nome)
+      .once('value')
+      .then(e => {
+        e = e.val();
+        one.pontos = e ? e : 0;
+      });
+
+    let two = this.equipes.two;
+
+    firebase
+      .database()
+      .ref(two.nome)
+      .once('value')
+      .then(e => {
+        e = e.val();
+        two.pontos = e ? e : 0;
+      });
+
+    let three = this.equipes.three;
+
+    firebase
+      .database()
+      .ref(three.nome)
+      .once('value')
+      .then(e => {
+        e = e.val();
+        three.pontos = e ? e : 0;
+      });
+
+    let four = this.equipes.four;
+
+    firebase
+      .database()
+      .ref(four.nome)
+      .once('value')
+      .then(e => {
+        e = e.val();
+        four.pontos = e ? e : 0;
+      });
+  }
+  },
+  mounted();
+  {
+    this.pesquisarDados();
+  }
+  }
+  ;
 </script>
 
 <style scoped>
