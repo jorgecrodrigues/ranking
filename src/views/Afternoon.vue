@@ -79,49 +79,17 @@ export default {
       }
     },
     async pesquisarDados() {
-      let one = this.equipes.one;
-
-      firebase
+      for (var prop in this.equipes) {
+        let equipe = this.equipes[prop];
+        firebase
         .database()
-        .ref(one.nome)
+        .ref(equipe.nome)
         .once("value")
         .then(e => {
           e = e.val();
-          one.pontos = e ? e : 0;
+          equipe.pontos = e ? e : 0;
         });
-
-      let two = this.equipes.two;
-
-      firebase
-        .database()
-        .ref(two.nome)
-        .once("value")
-        .then(e => {
-          e = e.val();
-          two.pontos = e ? e : 0;
-        });
-
-      let three = this.equipes.three;
-
-      firebase
-        .database()
-        .ref(three.nome)
-        .once("value")
-        .then(e => {
-          e = e.val();
-          three.pontos = e ? e : 0;
-        });
-
-      let four = this.equipes.four;
-
-      firebase
-        .database()
-        .ref(four.nome)
-        .once("value")
-        .then(e => {
-          e = e.val();
-          four.pontos = e ? e : 0;
-        });
+      }
     }
   },
   mounted() {
