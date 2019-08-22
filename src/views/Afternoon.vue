@@ -61,6 +61,7 @@ export default {
         return;
       }
 
+      this.jaVotou = true;
       let valorAntigo = (await firebase
         .database()
         .ref(opcao)
@@ -69,14 +70,13 @@ export default {
       valorAntigo = valorAntigo ? valorAntigo : 0;
 
       try {
-        this.jaVotou = true;
         await firebase
           .database()
           .ref(opcao)
           .set(++valorAntigo);
         // Sucesso
 
-        pesquisarDados();
+        await this.pesquisarDados();
       } catch (e) {
         // Fudeo de vez
       }
