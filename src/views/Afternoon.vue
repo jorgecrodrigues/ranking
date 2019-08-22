@@ -31,15 +31,15 @@
     height: 100%;
     background-image: url("../assets/svgs/one.svg");
     background-size: cover;
+    background-position: center right;
   }
 
   .box {
     margin-left: 50%;
     width: 50%;
     min-height: 100%;
-    border: 1px solid;
     display: flex;
     flex-direction: column;
-    justify-items: center;
+    justify-items: flex-end;
   }
 </style>

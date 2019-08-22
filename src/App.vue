@@ -12,7 +12,7 @@
 
   body {
     margin: 0;
-    font-family: 'Baloo Chettan', cursive;
+    font-family: 'Lato', sans-serif;
   }
 
   #app {

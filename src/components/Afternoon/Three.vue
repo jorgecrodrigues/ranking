@@ -1,6 +1,6 @@
 <template>
   <div class="three">
-    <h1>TecSoc</h1>
+    <h1>CDF Transportes</h1>
   </div>
 </template>
 
@@ -12,9 +12,11 @@
 
 <style scoped>
   .three {
-    margin: 25px;
+    margin: 15px;
     padding: .4rem 2rem;
     background: #55efc4;
+    background-image: url("../../assets/svgs/bg.svg");
+    background-size: cover;
     border: 10px solid white;
     border-radius: 5px;
     letter-spacing: 10px;
