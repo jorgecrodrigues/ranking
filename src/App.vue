@@ -5,13 +5,13 @@
 </template>
 
 <style>
+  * {
+    box-sizing: border-box;
+  }
+
   html,
   body {
     height: 100%;
-  }
-
-  * {
-    box-sizing: border-box;
   }
 
   body {
