@@ -19,7 +19,18 @@
     background-size: cover;
     border: 10px solid white;
     border-radius: 5px;
-    letter-spacing: 10px;
+    text-transform: uppercase;
     cursor: pointer;
+    transition: letter-spacing, background-position 200ms ease-in-out;
+  }
+
+  .two:hover {
+    background-position: center right;
+    letter-spacing: 15px;
+    font-weight: 900;
+  }
+
+  .two:active {
+    transform: scale(0.98);
   }
 </style>
