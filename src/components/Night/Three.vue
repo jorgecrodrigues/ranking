@@ -1,12 +1,12 @@
 <template>
   <div class="card">
-    <h1>+ Acesso</h1>
+    <h1>Bizzarro</h1>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'One'
+    name: 'Three'
   };
 </script>
 
@@ -18,7 +18,7 @@
   .card {
     padding: .4rem 2rem;
     width: 100%;
-    background: #55efc4;
+    background: #74b9ff;
     background-image: url("../../assets/svgs/bg.svg");
     background-size: cover;
     border: 10px solid white;

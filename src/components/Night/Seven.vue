@@ -1,12 +1,12 @@
 <template>
   <div class="card">
-    <h1>+ Acesso</h1>
+    <h1>MedBot</h1>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'One'
+    name: 'Seven'
   };
 </script>
 
@@ -14,11 +14,10 @@
   h1 {
     margin: .5rem;
   }
-
   .card {
     padding: .4rem 2rem;
     width: 100%;
-    background: #55efc4;
+    background: #fd79a8;
     background-image: url("../../assets/svgs/bg.svg");
     background-size: cover;
     border: 10px solid white;
