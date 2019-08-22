@@ -1,10 +1,17 @@
 <template>
   <div class="afternoon bg-pan-left">
     <div class="box">
-      <One v-on:click.native="enviarVoto('Sir-Barman')" />
-      <Two v-on:click.native="enviarVoto('TecSoc')" />
-      <three v-on:click.native="enviarVoto('CDF-Transportes')" />
-      <Four v-on:click.native="enviarVoto('NewFast')" />
+      <div class="box-left">
+        <h1 class="question">
+          Qual destes negócios você acredita que tem mais potencial para ser lançado no mercado?
+        </h1>
+      </div>
+      <div class="box-right">
+        <One v-on:click.native="enviarVoto('Sir-Barman')"/>
+        <Two v-on:click.native="enviarVoto('TecSoc')"/>
+        <three v-on:click.native="enviarVoto('CDF-Transportes')"/>
+        <Four v-on:click.native="enviarVoto('NewFast')"/>
+      </div>
     </div>
   </div>
 </template>
@@ -50,17 +57,21 @@ export default {
   methods: {
     async enviarVoto(opcao) {
 
-      if (this.jaVotou) {
-        // Corno já votou
-        return;
-      }
+        if(jaVotou){
+          // Corno já votou
+          return;
+        }
+
+        let valorAntigo = await firebase.database()
+          .ref(opcao)
+          .once('value');
+
+        valorAntigo = valorAntigo ? valorAntigo : 0;
 
       let valorAntigo = (await firebase
         .database()
         .ref(opcao)
         .once("value")).val();
-
-      console.log(valorAntigo);
 
       valorAntigo = valorAntigo ? valorAntigo : 0;
 
@@ -93,19 +104,40 @@ export default {
 </script>
 
 <style scoped>
-.afternoon {
-  height: 100%;
-  background-image: url("../assets/svgs/one.svg");
-  background-size: cover;
-  background-position: center right;
-}
+  .afternoon {
+    height: 100%;
+  }
 
-.box {
-  margin-left: 50%;
-  width: 50%;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-items: flex-end;
-}
+  .question {
+    width: 60%;
+    padding: 5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    font-size: 3rem;
+    color: black;
+  }
+
+  .box {
+    min-height: 100%;
+    display: flex;
+  }
+
+  .box-left,
+  .box-right {
+    width: 50%;
+  }
+
+  .box-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
 </style>

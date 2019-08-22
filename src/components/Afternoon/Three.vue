@@ -12,8 +12,8 @@
 
 <style scoped>
   .three {
-    margin: 15px;
     padding: .4rem 2rem;
+    width: 100%;
     background: #55efc4;
     background-image: url("../../assets/svgs/bg.svg");
     background-size: cover;
