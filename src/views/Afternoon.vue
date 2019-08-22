@@ -17,53 +17,84 @@
 </template>
 
 <script>
-  import firebase from 'firebase';
-  import One from '@/components/Afternoon/One.vue';
-  import Two from '@/components/Afternoon/Two.vue';
-  import Three from '@/components/Afternoon/Three.vue';
-  import Four from '@/components/Afternoon/Four.vue';
+import firebase from "firebase";
+import One from "@/components/Afternoon/One.vue";
+import Two from "@/components/Afternoon/Two.vue";
+import Three from "@/components/Afternoon/Three.vue";
+import Four from "@/components/Afternoon/Four.vue";
 
-  export default {
-    name: 'Afternoon',
-    components: {
-      One,
-      Two,
-      Three,
-      Four
-    },
-    data(){
-      return{
-        jaVotou: false
-      }
-    },
-    methods:{
-      async enviarVoto(opcao){
-
-        if(jaVotou){
-          // Corno já votou
-          return;
+export default {
+  name: "Afternoon",
+  components: {
+    One,
+    Two,
+    Three,
+    Four
+  },
+  data() {
+    return {
+      jaVotou: false,
+      equipes: {
+        one: {
+          nome: "Sir-Barman",
+          pontos: 0
+        },
+        two: {
+          nome: "TecSoc",
+          pontos: 0
+        },
+        three: {
+          nome: "CDF-Transportes",
+          pontos: 0
+        },
+        four: {
+          nome: "NewFast",
+          pontos: 0
         }
+      }
+    };
+  },
+  methods: {
+    async enviarVoto(opcao) {
 
-        let valorAntigo = await firebase.database()
+      if(jaVotou){
+        // Corno já votou
+        return;
+      }
+
+      let valorAntigo = (await firebase
+        .database()
+        .ref(opcao)
+        .once("value")).val();
+
+      valorAntigo = valorAntigo ? valorAntigo : 0;
+
+      try {
+        await firebase
+          .database()
           .ref(opcao)
-          .once('value');
+          .set(++valorAntigo);
+        // Sucesso
 
-        valorAntigo = valorAntigo ? valorAntigo : 0;
-
-        try{
-          await firebase.database()
-            .ref(opcao)
-            .set(++valorAntigo);
-          // Sucesso
-
-          jaVotou = true;
-        }catch(e){
-          // Fudeo de vez
-
-        }
+        pesquisarDados()
+        this.jaVotou = true;
+      } catch (e) {
+        // Fudeo de vez
       }
+    },
+    async pesquisarDados() {
+      equipes.array.forEach(element => {
+        firebase
+          .database()
+          .ref(element.nome)
+          .then(e => {
+            e = e.val();
+            element.pontos = e ? e : 0
+          });
+      });
     }
-  };
+  }
+};
 </script>
 
 <style scoped>
